@@ -1,0 +1,8 @@
+{
+  "name": "Venta & Inventario App",
+  "description": "Sistema de gestión comercial: punto de venta, inventario con control de stock, clientes, órdenes en PDF y Excel, y usuarios por zona.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

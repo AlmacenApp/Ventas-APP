@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Artículos y productos del inventario",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "unit": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "taxRate": { "type": "number" },
+        "stock": { "type": "number" },
+        "cost": { "type": "number" }
+      },
+      "required": ["id", "code", "description", "price", "stock"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "Clientes del sistema para pedidos y facturación",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "company": { "type": "string" },
+        "zone": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["id", "code", "company"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Órdenes de venta generadas por vendedores o administrador",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "customer": { "type": "string" },
+        "total": { "type": "number" },
+        "zone": { "type": "string" },
+        "seller": { "type": "string" }
+      },
+      "required": ["id", "date", "customer", "total", "zone", "seller"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Usuarios del sistema con roles y códigos PIN de acceso",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "pin": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "seller"] },
+        "zone": { "type": "string" }
+      },
+      "required": ["id", "username", "pin", "role"]
+    },
+    "Setting": {
+      "title": "Setting",
+      "description": "Configuraciones globales como número de WhatsApp del administrador",
+      "type": "object",
+      "properties": {
+        "adminPhone": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Colección de productos del catálogo de inventario"
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Colección de clientes registrados"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Colección de pedidos y ventas"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Colección de usuarios y credenciales del sistema"
+    },
+    "/settings/{settingId}": {
+      "schema": "Setting",
+      "description": "Configuraciones globales compartidas"
+    }
+  }
+}
